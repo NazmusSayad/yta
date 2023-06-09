@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "@types/inquirer": "^9.0.3",
+    "@types/progress": "^2.0.5",
+    "@types/prompts": "^2.4.4",
+    "download": "^8.0.0",
+    "inquirer": "^9.2.7",
+    "progress": "^2.0.3",
+    "prompts": "^2.4.2",
+    "youtube-dl-exec": "^2.4.4"
+  },
+  "devDependencies": {
+    "@types/download": "latest",
+    "@types/yargs": "latest",
+    "npm-ez": "latest",
+    "typescript": "latest"
+  },
+  "name": "ytdl",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "npm-ez dev --module=cjs",
+    "build": "npm-ez build --module=cjs"
+  },
+  "main": "./dist-cjs/index.cjs",
+  "module": "./dist-mjs/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist-cjs/index.cjs",
+      "import": "./dist-mjs/index.mjs",
+      "types": "./dist-mjs/index.mts"
+    }
+  }
+}
