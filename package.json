@@ -14,12 +14,12 @@
     "npm-ez": "latest",
     "typescript": "latest"
   },
-  "name": "ytdl",
+  "name": "dlyt",
   "version": "0.0.0",
   "scripts": {
     "test": "node --watch ./dist-cjs",
-    "dev": "npm-ez dev",
-    "build": "npm-ez build"
+    "dev": "npm-ez dev --module=cjs",
+    "build": "npm-ez build --module=cjs"
   },
-  "bin": "./dist-cjs/bin.cjs"
+  "bin": "./dist-cjs/index.cjs"
 }
