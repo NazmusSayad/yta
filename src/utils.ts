@@ -17,3 +17,10 @@ export function sanitizeFileName(fileName: string, maxLength = 255) {
 
   return normalizedFileName
 }
+
+export function checkYTLink(link: string) {
+  const youtubeWatchRegex =
+    /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})$/
+
+  return youtubeWatchRegex.test(link)
+}

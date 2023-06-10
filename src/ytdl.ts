@@ -4,6 +4,8 @@ import { YtInfo } from './types/ytdl'
 
 export default async function (...links: string[]) {
   const promises = links.map((link) => {
+    console.log('\n', 'Gettings video info:', link)
+
     return ytdl(link, {
       dumpSingleJson: true,
       noCheckCertificates: true,
