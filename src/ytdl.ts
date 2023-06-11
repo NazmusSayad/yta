@@ -1,23 +1,24 @@
 import _ytdl = require('youtube-dl-exec')
 const ytdl = _ytdl as any
 import { YtInfo } from './types/ytdl'
+import * as color from 'ansi-colors'
 
 export default async function (...links: string[]) {
   const promises = links.map((link) => {
-    console.log('\n', 'Gettings video info:', link)
+    console.log('Gettings video info:', color.cyan(link))
 
     return ytdl(link, {
-      dumpSingleJson: true,
-      noCheckCertificates: true,
       noWarnings: true,
       allFormats: true,
+      dumpSingleJson: true,
       preferFreeFormats: true,
+      noCheckCertificates: true,
       addHeader: ['referer:youtube.com', 'user-agent:googlebot'],
     })
   })
 
   const responses = await Promise.all<YtInfo[]>(promises)
-  return responses.map(({ formats, ...props }) => ({
+  return responses.filter(Boolean).map(({ formats, ...props }) => ({
     ...props,
     formats: formats.filter(({ ext }) => ext !== 'mhtml'),
   }))

@@ -1,10 +1,12 @@
 {
   "dependencies": {
+    "ansi-colors": "^4.1.3",
     "download": "^8.0.0",
     "progress": "^2.0.3",
     "prompts": "^2.4.2",
     "yargs": "^17.7.2",
-    "youtube-dl-exec": "^2.4.4"
+    "youtube-dl-exec": "^2.4.4",
+    "ytdl-core": "^4.11.4"
   },
   "devDependencies": {
     "@types/download": "latest",
@@ -14,10 +16,10 @@
     "npm-ez": "latest",
     "typescript": "latest"
   },
-  "name": "dlyt",
-  "version": "0.0.0",
+  "name": "yta",
+  "version": "0.0.1",
   "scripts": {
-    "test": "node --watch ./dist-cjs",
+    "test": "node --watch ./dist-cjs/index.js",
     "dev": "npm-ez dev --module=cjs",
     "build": "npm-ez build --module=cjs"
   },

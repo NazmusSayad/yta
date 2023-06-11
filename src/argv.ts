@@ -13,14 +13,25 @@ const inputs = yargs
 
   .option('type', {
     alias: 't',
-    choices: ['m4a', 'webm', '3gp', 'mp4'],
     describe: 'Which format to download',
+    choices: ['m4a', 'webm', '3gp', 'mp4'],
   })
 
   .option('quality', {
     alias: 'q',
-    choices: ['144p', '240p', '360p', '480p', '720p', '1080p'],
     describe: 'Which quality to download',
+    choices: [
+      '144p',
+      '240p',
+      '360p',
+      '480p',
+      '720p',
+      '720p60',
+      '1080p',
+      '1080p60',
+      '1440p',
+      '1440p60',
+    ],
   })
 
   .option('help', {
@@ -28,4 +39,6 @@ const inputs = yargs
     description: 'Display help information',
   })
 
-export default inputs.argv as ResolvedType<typeof inputs.argv>
+const argv = inputs.argv as ResolvedType<typeof inputs.argv>
+export default argv
+export const YTLinks = argv._.map((link) => {})

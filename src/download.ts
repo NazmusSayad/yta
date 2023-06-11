@@ -1,11 +1,12 @@
 import download = require('download')
 import ProgressBar = require('progress')
+import { sanitizeFileName } from './utils'
 
 export default async function downloadWithProgressBar(
   url: string,
-  destination: string,
-  filename: string
+  { title, ext, dir }: { title: string; ext: string; dir: string }
 ) {
+  let startTime = Date.now()
   const progressBar = new ProgressBar(':percent [:bar] :speed, :etas', {
     total: 100,
     width: 30,
@@ -17,9 +18,10 @@ export default async function downloadWithProgressBar(
     },
   } as any)
 
-  let startTime = Date.now()
+  const filename = `${sanitizeFileName(title)}.${ext}`
+  console.log(`\nDownloading: ${filename}`)
 
-  await download(url, destination, { filename })
+  await download(url, dir, { filename })
     .on('response', (res: any) => {
       const totalSize = parseInt(res.headers['content-length'], 10)
       progressBar.total = totalSize
